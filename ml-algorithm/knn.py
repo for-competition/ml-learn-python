@@ -33,3 +33,9 @@ def img2vec(filename):
         for j in range(32):
             returnVec[0,32*i+j] = int(lineStr[j])
     return returnVec
+
+for i in range(3):
+    plt.scatter(group[i][0],group[i][1],linewidth=2.5)
+plt.xlim(xmax=2)
+plt.ylim(ymax=2)
+plt.show()
