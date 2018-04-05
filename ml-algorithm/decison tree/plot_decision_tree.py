@@ -53,7 +53,8 @@ def retrieveTree(i):
 
 def plotmidtext(cntrpt,parentpt,txtstring):
     xmid = (parentpt[0]-cntrpt[0])/2.0 + cntrpt[0]
-    ymid = (parentpt[1]-cntrpt[1])/2/0 + cntrpt[1]
+    ymid = (parentpt[1]-cntrpt[1])/2.0 + cntrpt[1]
+    createPlot.ax1 = plt.subplot(111, frameon=False)
     createPlot.ax1.text(xmid,ymid,txtstring)
 
 def plotree(mytree,parentpt,nodetxt):
@@ -63,7 +64,7 @@ def plotree(mytree,parentpt,nodetxt):
     plotmidtext(cntrpt,parentpt,nodetxt)
     plotnode(firstStr,cntrpt,parentpt,decisionNode)
     secondDict = mytree[firstStr]
-    plotree.yOff = plotree.yOff - 1.0/plotree.totalD
+    plotree.yOff = plotree.yOff - 1.0/plotree.totald
     for key in secondDict.keys():
         if type(secondDict[key]).__name__=='dict':
             plotree(secondDict[key],cntrpt,str(key))
@@ -71,7 +72,7 @@ def plotree(mytree,parentpt,nodetxt):
             plotree.xOff = plotree.xOff + 1.0/plotree.totalw
             plotnode(secondDict[key],(plotree.xOff,plotree.yOff),cntrpt,leafNode)
             plotmidtext((plotree.xOff,plotree.yOff),cntrpt,str(key))
-    plotree.yOff = plotree.yOff + 1.0/plotree.totalD
+    plotree.yOff = plotree.yOff + 1.0/plotree.totald
 
     
 def createplotree(intree):
